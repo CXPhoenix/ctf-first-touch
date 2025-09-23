@@ -1,0 +1,22 @@
+{
+  "name": "slidev-aisp-template",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "slidev build",
+    "dev": "slidev --open",
+    "export": "slidev export"
+  },
+  "dependencies": {
+    "@cxphoenix/slidev-addon-python-runner": "^1.0.0",
+    "@cxphoenix/slidev-theme-fhsh-aisp": "^1.2.0",
+    "@slidev/cli": "^52.1.0",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "slidev-addon-tldraw": "^0.4.2",
+    "vue": "^3.5.18"
+  },
+  "devDependencies": {
+    "playwright-chromium": "^1.55.0"
+  }
+}

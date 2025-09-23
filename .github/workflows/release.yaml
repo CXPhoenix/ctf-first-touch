@@ -1,0 +1,85 @@
+name: Release -> Export PDF & Deploy Pages
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-export:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 步驟 1: 安裝 pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # 您可以指定 pnpm 的版本
+
+      # 步驟 2: 設定 Node.js 並啟用 pnpm 快取
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+          cache: 'pnpm' # 指定快取 pnpm 的依賴套件
+
+      # 步驟 3: 使用 pnpm 安裝依賴
+      - name: Install dependencies
+        run: pnpm install
+
+      # 步驟 4: 使用 pnpm 執行 Playwright
+      - name: Install Playwright browsers
+        run: pnpm playwright install --with-deps chromium
+
+      # 步驟 4: 使用 pnpm 執行 Slidev
+      - name: Build Slidev site
+        run: pnpm slidev build --base /${{ github.event.repository.name }}/
+
+      # 可選：避免深連結重新整理 404
+      - name: SPA fallback (optional)
+        run: cp dist/index.html dist/404.html
+
+      # 步驟 4: 使用 pnpm 執行 Slidev
+      - name: Export PDF
+        run: pnpm slidev export --timeout 300000 --with-clicks true --output slides.pdf
+
+      # 附加 PDF 到本次 Release (此步驟不需變更)
+      - name: Attach PDF to Release
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ github.event.release.upload_url }}
+          asset_path: ./slides.pdf
+          asset_name: ${{ github.event.repository.name }}-${{ github.event.release.tag_name }}.pdf
+          asset_content_type: application/pdf
+
+      # 以下維持 Pages 的部署流程 (此處不需變更)
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy: # 此 job 完全不需變更
+    needs: build-and-export
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
