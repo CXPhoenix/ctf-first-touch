@@ -11,6 +11,9 @@ importers:
       '@cxphoenix/slidev-theme-fhsh-aisp':
         specifier: ^1.2.0
         version: 1.2.0(@nuxt/kit@3.19.2)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(postcss@8.5.6)(typescript@5.9.2)(vite@7.1.7(@types/node@22.18.6)(jiti@2.6.0)(yaml@2.8.1))(vue@3.5.21(typescript@5.9.2))
+      '@cxphoenix/slidev-theme-fhsh-isiphs-universal':
+        specifier: ^1.0.1
+        version: 1.0.1(@nuxt/kit@3.19.2)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(postcss@8.5.6)(typescript@5.9.2)(vite@7.1.7(@types/node@22.18.6)(jiti@2.6.0)(yaml@2.8.1))(vue@3.5.21(typescript@5.9.2))
       '@slidev/cli':
         specifier: ^52.1.0
         version: 52.2.4(@babel/parser@7.28.4)(@nuxt/kit@3.19.2)(@types/markdown-it@14.1.2)(@types/node@22.18.6)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(playwright-chromium@1.55.0)(postcss@8.5.6)(react@19.1.1)
@@ -189,6 +192,10 @@ packages:
 
   '@cxphoenix/slidev-theme-fhsh-aisp@1.2.0':
     resolution: {integrity: sha512-1mLpowcEkPiA0B4IRbagyP7SByKR5LG9L5/M9MFMQRac5Yoedyes93fGf2qXpDBdyRefPAdfwCmi5lbqMn0UaQ==}
+    engines: {node: '>=18.0.0'}
+
+  '@cxphoenix/slidev-theme-fhsh-isiphs-universal@1.0.1':
+    resolution: {integrity: sha512-xa9PX/OeCqmaxuwkmsj5WHtoGB0FWhlwAFjWPVyjzusxqx5ezbTHrs+Ti/rqdhfrI8wtv3Y7gTak/E3oDA/NBA==}
     engines: {node: '>=18.0.0'}
 
   '@drauu/core@0.4.3':
@@ -4101,6 +4108,27 @@ snapshots:
   '@chevrotain/utils@11.0.3': {}
 
   '@cxphoenix/slidev-theme-fhsh-aisp@1.2.0(@nuxt/kit@3.19.2)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(postcss@8.5.6)(typescript@5.9.2)(vite@7.1.7(@types/node@22.18.6)(jiti@2.6.0)(yaml@2.8.1))(vue@3.5.21(typescript@5.9.2))':
+    dependencies:
+      '@slidev/types': 52.2.4(@nuxt/kit@3.19.2)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(postcss@8.5.6)(typescript@5.9.2)(vite@7.1.7(@types/node@22.18.6)(jiti@2.6.0)(yaml@2.8.1))
+      '@vueuse/core': 13.9.0(vue@3.5.21(typescript@5.9.2))
+      prettier: 3.6.2
+    transitivePeerDependencies:
+      - '@nuxt/kit'
+      - '@svgr/core'
+      - '@svgx/core'
+      - '@unocss/webpack'
+      - '@vue/compiler-sfc'
+      - markdown-it-async
+      - postcss
+      - supports-color
+      - svelte
+      - typescript
+      - vite
+      - vue
+      - vue-template-compiler
+      - vue-template-es2015-compiler
+
+  '@cxphoenix/slidev-theme-fhsh-isiphs-universal@1.0.1(@nuxt/kit@3.19.2)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(postcss@8.5.6)(typescript@5.9.2)(vite@7.1.7(@types/node@22.18.6)(jiti@2.6.0)(yaml@2.8.1))(vue@3.5.21(typescript@5.9.2))':
     dependencies:
       '@slidev/types': 52.2.4(@nuxt/kit@3.19.2)(@vue/compiler-sfc@3.5.21)(markdown-it-async@2.2.0)(postcss@8.5.6)(typescript@5.9.2)(vite@7.1.7(@types/node@22.18.6)(jiti@2.6.0)(yaml@2.8.1))
       '@vueuse/core': 13.9.0(vue@3.5.21(typescript@5.9.2))

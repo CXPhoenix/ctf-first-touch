@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@cxphoenix/slidev-theme-fhsh-aisp": "^1.2.0",
+    "@cxphoenix/slidev-theme-fhsh-isiphs-universal": "^1.0.1",
     "@slidev/cli": "^52.1.0",
     "@slidev/theme-default": "latest",
     "@slidev/theme-seriph": "latest",

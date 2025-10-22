@@ -1,5 +1,6 @@
 ---
-theme: '@cxphoenix/slidev-theme-fhsh-aisp'
+theme: '@cxphoenix/slidev-theme-fhsh-isiphs-universal'
+themeName: fhsh
 addons:
   - tldraw
 title: 資安實務課程
